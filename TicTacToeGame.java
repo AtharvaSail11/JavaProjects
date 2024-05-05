@@ -69,8 +69,18 @@ public class TicTacToeGame {
                 num2 = winConditions[i][1];
                 num3 = winConditions[i][2];
                 if (board[num1] == 'X' && board[num2] == 'X' && board[num3] == 'X') {
-                    System.out.println("X wins");
                     Xwins=true;
+                    if (dashCount == 0 && Xwins==true) {
+                        System.out.println("X wins");
+                        for (int l = 0; l < size; l++) {
+                            board[l] = '-';
+                        }
+                        moves = "012345678";
+                        moveCount = 8;
+                        Xwins=false;
+                        break;
+                    }
+                    System.out.println("X wins");
                     for (int k = 0; k < size; k++) {
                         board[k] = '-';
                     }
@@ -82,6 +92,17 @@ public class TicTacToeGame {
                 if (board[num1] == 'O' && board[num2] == 'O' && board[num3] == 'O') {
                     System.out.println("O wins");
                     Owins=true;
+                    if(dashCount ==0 && Owins==true){
+                        System.out.println("O wins");
+                        for (int l = 0; l < size; l++) {
+                            board[l] = '-';
+                        }
+                        moves = "012345678";
+                        moveCount = 8;
+                        Owins=false;
+                        break;
+                    }
+                    System.out.println("O wins");
                     for (int k = 0; k < size; k++) {
                         board[k] = '-';
                     }
@@ -91,25 +112,8 @@ public class TicTacToeGame {
                 }
             }
         }
-        if (dashCount == 0 && Xwins==true) {
-            System.out.println("X wins");
-            for (int i = 0; i < size; i++) {
-                board[i] = '-';
-            }
-            moves = "012345678";
-            moveCount = 8;
-            Xwins=false;
-        }
-        else if(dashCount ==0 && Owins==true){
-            System.out.println("O wins");
-            for (int i = 0; i < size; i++) {
-                board[i] = '-';
-            }
-            moves = "012345678";
-            moveCount = 8;
-            Owins=false;
-        }
-        else if(dashCount==0 && Owins==false && Xwins==false ){
+        
+         if(dashCount==0 && Owins==false && Xwins==false ){
             System.out.println("It is a Tie");
             for (int i = 0; i < size; i++) {
                 board[i] = '-';

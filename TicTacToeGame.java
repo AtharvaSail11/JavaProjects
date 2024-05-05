@@ -70,7 +70,7 @@ public class TicTacToeGame {
                 num3 = winConditions[i][2];
                 if (board[num1] == 'X' && board[num2] == 'X' && board[num3] == 'X') {
                     Xwins=true;
-                    if (dashCount == 0 && Xwins==true) {
+                    if (Xwins ==true || dashCount == 0 && Xwins == true) {
                         System.out.println("X wins");
                         for (int l = 0; l < size; l++) {
                             board[l] = '-';
@@ -80,19 +80,10 @@ public class TicTacToeGame {
                         Xwins=false;
                         break;
                     }
-                    System.out.println("X wins");
-                    for (int k = 0; k < size; k++) {
-                        board[k] = '-';
-                    }
-                    moves = "012345678";
-                    moveCount = 8;
-                    break;
                 }
-
-                if (board[num1] == 'O' && board[num2] == 'O' && board[num3] == 'O') {
-                    System.out.println("O wins");
+                else if (board[num1] == 'O' && board[num2] == 'O' && board[num3] == 'O') {
                     Owins=true;
-                    if(dashCount ==0 && Owins==true){
+                    if(Owins == true || dashCount ==0 && Owins==true){
                         System.out.println("O wins");
                         for (int l = 0; l < size; l++) {
                             board[l] = '-';
@@ -102,25 +93,18 @@ public class TicTacToeGame {
                         Owins=false;
                         break;
                     }
-                    System.out.println("O wins");
-                    for (int k = 0; k < size; k++) {
-                        board[k] = '-';
-                    }
-                    moves = "012345678";
-                    moveCount = 8;
-                    break;
                 }
             }
         }
-        
-         if(dashCount==0 && Owins==false && Xwins==false ){
+        if(dashCount==0 && Owins==false && Xwins==false ){
             System.out.println("It is a Tie");
-            for (int i = 0; i < size; i++) {
-                board[i] = '-';
+            for (int k = 0; k < size; k++) {
+                board[k] = '-';
             }
             moves = "012345678";
             moveCount = 8;
         }
+        
     }
 
     static void boardInput(char[] board, int size, int turnX, int turnO, int option) {
@@ -145,7 +129,7 @@ public class TicTacToeGame {
                 String newString1 = moves.substring(0, index);
                 String newString2 = moves.substring(index + 1);
                 moves = newString1 + newString2;
-                System.out.println(moves);
+                
             }
             if (turnO == 1) {
                 int random = (int) Math.floor(Math.random() * moveCount);
@@ -163,7 +147,8 @@ public class TicTacToeGame {
                 String newString1 = moves.substring(0, index);
                 String newString2 = moves.substring(index + 1);
                 moves = newString1 + newString2;
-                System.out.println(moves);
+                int Move=Integer.parseInt(move);
+                System.out.println("O played on tile:"+(Move+1));
             }
         } else if (option == 2) {
             Scanner sc = new Scanner(System.in);
